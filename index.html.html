@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="kk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Personal Pronouns — English with Ernar</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800;900&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#eaf4ff;--card:#fff;--ink:#1b2a5c;--mut:#5b6a99;--b:#4a7cff;--y:#ffc83d;--ok:#2fc98e;--no:#ff6b5e;--line:#d3e2ff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1936;--card:#1b2850;--ink:#f1f5ff;--mut:#a9b8e6;--line:#2d3d73}}
+:root[data-theme="dark"]{--bg:#0f1936;--card:#1b2850;--ink:#f1f5ff;--mut:#a9b8e6;--line:#2d3d73}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Nunito",system-ui,sans-serif;font-weight:600}
+.wrap{max-width:560px;margin:0 auto;padding:16px}
+h1{font-size:28px;font-weight:900;margin:4px 0 2px}
+.sub{color:var(--mut);margin:0 0 12px}
+.top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.pill{background:var(--y);color:#1b2a5c;font-weight:900;border-radius:99px;padding:6px 14px;white-space:nowrap}
+.track{flex:1;height:12px;background:var(--line);border-radius:9px;overflow:hidden}
+#bar{height:100%;width:0;background:var(--ok);transition:width .4s}
+nav{display:flex;gap:6px;overflow-x:auto;padding:4px 0 10px}
+nav button{flex:none;font:inherit;font-weight:800;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;padding:8px 12px;cursor:pointer}
+nav button.on{background:var(--b);border-color:var(--b);color:#fff}
+.panel{display:none;background:var(--card);border-radius:22px;padding:18px;border:2px solid var(--line)}
+.panel.on{display:block}
+.ins{color:var(--mut);margin:0 0 14px;font-size:15px}
+.ph{width:132px;height:132px;border-radius:50%;margin:0 auto 8px;display:grid;place-items:center;font-size:68px;border:5px solid #fff;box-shadow:0 0 0 3px var(--line)}
+.q{text-align:center}.cap{margin:0;color:var(--mut);font-weight:800}
+.s{font-size:21px;font-weight:800;margin:8px 0 14px}
+u{text-decoration:none;border-bottom:4px solid var(--y);padding:0 14px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+button{font:inherit}
+.opts button,.chip,.bk{border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:16px;padding:14px;font-size:20px;font-weight:900;cursor:pointer}
+.opts button.ok,.chip.ok{background:var(--ok);border-color:var(--ok);color:#06281c}
+.opts button.no{background:var(--no);border-color:var(--no);color:#fff;animation:sh .3s}
+@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.fb{min-height:44px;text-align:center;margin:12px 0 0;font-weight:800}
+.nx{background:var(--b);color:#fff;border:0;border-radius:12px;padding:8px 16px;font-weight:900;cursor:pointer;margin-left:6px}
+.pg{text-align:center;color:var(--mut);font-size:14px}
+.done{text-align:center;font-size:56px}.done h3{margin:0 0 10px;font-size:32px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fc{border:0;border-radius:20px;padding:14px 8px;min-height:150px;color:#1b2a5c;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.fc .e{font-size:46px}.fc b{font-size:28px}.fc small{font-size:14px;font-weight:800}
+.pool{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;min-height:48px}
+.chip{padding:10px 14px;font-size:17px}
+.bks{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bk{text-align:left;min-height:110px;padding:10px}
+.bk b{display:block;font-size:22px;margin-bottom:6px}
+.bk .chip{display:inline-block;margin:2px;padding:4px 8px;font-size:14px}
+.chip.sel{outline:4px solid var(--y)}
+.chip.bad{animation:sh .3s;background:var(--no);color:#fff}
+.build{min-height:62px;border:3px dashed var(--line);border-radius:16px;padding:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.build.ok{border-color:var(--ok);border-style:solid}
+.build.no{animation:sh .3s;border-color:var(--no)}
+.tr{font-size:18px;font-weight:800;text-align:center;margin:0 0 10px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+button:focus-visible{outline:4px solid var(--y);outline-offset:2px}
+</style></head><body><div class="wrap">
+<h1>🗣️ Personal Pronouns</h1>
+<p class="sub">I · You · He · She · It · We · They — ойнап үйрен!</p>
+<div class="top"><div class="track"><div id="bar"></div></div><div class="pill">⭐ <span id="tot">0 / 0</span></div></div>
+<nav id="nav"></nav>
+<div id="panels"></div>
+</div>
+<script>
+const P=["I","You","He","She","It","We","They"];
+const $=s=>document.querySelector(s);
+const sh=a=>a.map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
+const score={},max={};
+function upd(){let s=0,m=0;for(const k in max){m+=max[k];s+=score[k]||0}$('#tot').textContent=s+" / "+m;$('#bar').style.width=(m?s/m*100:0)+"%"}
+
+/* 1. Flash cards */
+function flash(box){
+ const D=[["I","🙋","мен","I am Ernar.","#ffd9a8"],["You","🫵","сен / сіз","You are my friend.","#c9f2dc"],["He","👦","ол (ер адам)","He is a boy.","#cfe0ff"],["She","👧","ол (әйел адам)","She is a girl.","#ffd1dc"],["It","🐱","ол (зат, хайуан)","It is a cat.","#e8dcff"],["We","👨‍👩‍👧","біз","We are a family.","#fff0a8"],["They","👭","олар","They are friends.","#c9f0f5"]];
+ box.innerHTML='<p class="ins">Картаны бас — аудармасы мен мысалын көр 👆</p><div class="cards"></div>';
+ const c=box.querySelector(".cards");
+ D.forEach(d=>{const b=document.createElement("button");b.className="fc";b.style.background=d[4];let f=0;
+  const r=()=>b.innerHTML=f?`<b>${d[2]}</b><small>${d[3]}</small>`:`<span class="e">${d[1]}</span><b>${d[0]}</b>`;
+  r();b.onclick=()=>{f=!f;r()};c.appendChild(b)});
+}
+
+/* generic multiple choice */
+function mcq(id,items,box,ins){
+ let i=0,sc=0;score[id]=0;max[id]=items.length;
+ function r(){
+  if(i>=items.length){box.innerHTML=`<div class="done">🎉<h3>${sc} / ${items.length}</h3><button class="nx">Қайта бастау</button></div>`;
+   box.querySelector(".nx").onclick=()=>{i=0;sc=0;score[id]=0;upd();r()};return}
+  const it=items[i],o=sh([it.a,...sh(P.filter(p=>p!=it.a)).slice(0,3)]);
+  box.innerHTML=`<p class="ins">${ins}</p><div class="q"><div class="ph" style="background:${it.c}">${it.e}</div><p class="cap">${it.cap||""}</p><p class="s">${it.s}</p></div><div class="opts">${o.map(x=>`<button>${x}</button>`).join("")}</div><p class="fb"></p><div class="pg">${i+1} / ${items.length}</div>`;
+  let first=true;const bs=[...box.querySelectorAll(".opts button")],fb=box.querySelector(".fb");
+  bs.forEach(b=>b.onclick=()=>{
+   if(b.textContent==it.a){b.classList.add("ok");if(first){sc++;score[id]=sc;upd()}bs.forEach(x=>x.disabled=true);
+    fb.innerHTML="✅ "+it.h+' <button class="nx">Келесі</button>';fb.querySelector(".nx").onclick=()=>{i++;r()}}
+   else{first=false;b.classList.add("no");b.disabled=true;fb.textContent="Тағы байқап көр 💪"}});
+ }r();
+}
+
+/* 5. Sort */
+function sortG(box){
+ const D=[["my brother","👦","He"],["my mom","👩","She"],["the dog","🐶","It"],["the girls","👧👧","They"],["a doctor (man)","👨‍⚕️","He"],["the table","🪑","It"],["my parents","👨‍👩","They"],["grandma","👵","She"]];
+ const B=[["He","👨"],["She","👩"],["It","📦"],["They","👥"]];
+ let sel=null,mist=0,done=0;score.sort=0;max.sort=D.length;
+ box.innerHTML='<p class="ins">Сөзді таңда, сосын оған сай есімдік себетін бас 🧺</p><div class="pool"></div><div class="bks"></div><p class="fb"></p>';
+ const pool=box.querySelector(".pool"),bks=box.querySelector(".bks"),fb=box.querySelector(".fb");
+ sh(D).forEach(d=>{const c=document.createElement("button");c.className="chip";c.textContent=d[1]+" "+d[0];c.onclick=()=>{pool.querySelectorAll(".sel").forEach(x=>x.classList.remove("sel"));sel={c,d};c.classList.add("sel")};pool.appendChild(c)});
+ B.forEach(b=>{const k=document.createElement("button");k.className="bk";k.innerHTML=`<b>${b[1]} ${b[0]}</b>`;
+  k.onclick=()=>{if(!sel)return;
+   if(sel.d[2]==b[0]){sel.c.classList.remove("sel");sel.c.classList.add("ok");sel.c.disabled=true;k.appendChild(sel.c);done++;score.sort=Math.max(0,D.length-mist);upd();sel=null;
+    if(done==D.length)fb.textContent=`🎉 Керемет! Қате: ${mist}`}
+   else{mist++;sel.c.classList.add("bad");const c=sel.c;setTimeout(()=>c.classList.remove("bad"),400);fb.textContent="Бұл басқа себетке жатады 🤔"}};
+  bks.appendChild(k)});
+}
+
+/* 6. Build sentence */
+function ord(box){
+ const S=[["She is my friend.","Ол менің құрбым (қыз).","👧🤝"],["They are students.","Олар студенттер.","🧑‍🎓🧑‍🎓"],["We like pizza.","Біз пиццаны жақсы көреміз.","🍕"],["It is a cat.","Бұл мысық.","🐈"],["I am from Kazakhstan.","Мен Қазақстаннанмын.","🇰🇿"],["He plays football.","Ол футбол ойнайды.","⚽"]];
+ let i=0,sc=0;score.ord=0;max.ord=S.length;
+ function r(){
+  if(i>=S.length){box.innerHTML=`<div class="done">🏆<h3>${sc} / ${S.length}</h3><button class="nx">Қайта бастау</button></div>`;box.querySelector(".nx").onclick=()=>{i=0;sc=0;score.ord=0;upd();r()};return}
+  const [t,k,e]=S[i],w=t.split(" ");let first=true;
+  box.innerHTML=`<p class="ins">Сөздерді дұрыс ретпен қой 🧩</p><div class="ph" style="background:#ffe9b8">${e}</div><p class="tr">${k}</p><div class="build"></div><div class="pool"></div><p class="fb"></p><div class="pg">${i+1} / ${S.length}</div>`;
+  const bd=box.querySelector(".build"),pl=box.querySelector(".pool"),fb=box.querySelector(".fb");
+  const chk=()=>{const cur=[...bd.children].map(x=>x.textContent).join(" ");if([...bd.children].length<w.length)return;
+   if(cur==t){bd.classList.add("ok");if(first){sc++;score.ord=sc;upd()}fb.innerHTML='✅ Дұрыс! <button class="nx">Келесі</button>';fb.querySelector(".nx").onclick=()=>{i++;r()}}
+   else{first=false;bd.classList.add("no");fb.textContent="Қайта көр 💪";setTimeout(()=>{bd.classList.remove("no");[...bd.children].forEach(x=>pl.appendChild(x));fb.textContent=""},700)}};
+  sh(w).forEach(x=>{const c=document.createElement("button");c.className="chip";c.textContent=x;
+   c.onclick=()=>{if(bd.classList.contains("ok"))return;(c.parentNode==pl?bd:pl).appendChild(c);chk()};pl.appendChild(c)});
+ }r();
+}
+
+/* Sections */
+const T=[
+ ["🃏","Карточка",flash],
+ ["📸","Сурет",b=>mcq("pic",[
+  {e:"👦",c:"#cfe0ff",cap:"Tom",s:"Tom = <u>?</u>",a:"He",h:"Tom — ер бала → He"},
+  {e:"👧",c:"#ffd1dc",cap:"Anna",s:"Anna = <u>?</u>",a:"She",h:"Anna — қыз → She"},
+  {e:"🐱",c:"#e8dcff",cap:"The cat",s:"The cat = <u>?</u>",a:"It",h:"Хайуан → It"},
+  {e:"👫",c:"#c9f0f5",cap:"Tom and Anna",s:"Tom and Anna = <u>?</u>",a:"They",h:"Екі адам (біз жоқпыз) → They"},
+  {e:"🙋",c:"#ffd9a8",cap:"Me! (мен)",s:"Мен өзім туралы айтамын = <u>?</u>",a:"I",h:"Өзің туралы → I"},
+  {e:"🫵",c:"#c9f2dc",cap:"My friend (сен)",s:"Досыма қарап айтамын = <u>?</u>",a:"You",h:"Тыңдаушы → You"},
+  {e:"👨‍👩‍👧‍👦",c:"#fff0a8",cap:"My family and I",s:"My family and I = <u>?</u>",a:"We",h:"Мен + басқалар → We"},
+  {e:"📱",c:"#d5e5ff",cap:"The phone",s:"The phone = <u>?</u>",a:"It",h:"Зат → It"}],b,"Суретке қарап, дұрыс есімдікті таңда 📸")],
+ ["✏️","Толтыр",b=>mcq("gap",[
+  {e:"👩‍🏫",c:"#ffd1dc",s:"<u>?</u> is a teacher.",cap:"Ms. Aida",a:"She",h:"Ms. Aida — әйел → She"},
+  {e:"🧒",c:"#ffd9a8",s:"<u>?</u> am ten years old.",cap:"",a:"I",h:"am тек I-мен келеді"},
+  {e:"🐶",c:"#e8dcff",s:"<u>?</u> is very cute.",cap:"My dog",a:"It",h:"Төрт аяқты досың → It"},
+  {e:"🧑‍🤝‍🧑",c:"#c9f0f5",s:"Aru and Dana: <u>?</u> are best friends.",cap:"",a:"They",h:"Екеуі туралы → They"},
+  {e:"🧑‍🎓",c:"#c9f2dc",s:"Ernar, <u>?</u> are my student!",cap:"Teacher says",a:"You",h:"Тыңдаушыға → You"},
+  {e:"👨‍🍳",c:"#cfe0ff",s:"Marat is a cook. <u>?</u> cooks well.",cap:"",a:"He",h:"Marat — ер адам → He"},
+  {e:"🏠",c:"#fff0a8",s:"My family and I live here. <u>?</u> love it.",cap:"",a:"We",h:"Біз → We"}],b,"Бос орынға керекті есімдікті қой ✏️")],
+ ["🔁","Алмастыр",b=>mcq("rep",[
+  {e:"😊",c:"#ffd1dc",s:"<b>Aigerim</b> is happy.<br>→ <u>?</u> is happy.",a:"She",h:"Aigerim → She"},
+  {e:"⚽",c:"#cfe0ff",s:"<b>Dauren</b> plays football.<br>→ <u>?</u> plays football.",a:"He",h:"Dauren → He"},
+  {e:"📚",c:"#e8dcff",s:"<b>The books</b> are new.<br>→ <u>?</u> are new.",a:"They",h:"Көпше зат → They"},
+  {e:"📱",c:"#d5e5ff",s:"<b>My phone</b> is red.<br>→ <u>?</u> is red.",a:"It",h:"Жекеше зат → It"},
+  {e:"🤝",c:"#fff0a8",s:"<b>Ali and I</b> are friends.<br>→ <u>?</u> are friends.",a:"We",h:"Ali and I → We"},
+  {e:"🎧",c:"#c9f0f5",s:"<b>Bolat and Sara</b> listen to music.<br>→ <u>?</u> listen to music.",a:"They",h:"Екі адам → They"},
+  {e:"🍎",c:"#ffd9a8",s:"<b>Ali and you</b> are fast.<br>→ <u>?</u> are fast.",a:"You",h:"Ali and you → You"}],b,"Атауды есімдікке ауыстыр 🔁")],
+ ["🧺","Сұрыпта",sortG],
+ ["🧩","Сөйлем",ord]
+];
+const nav=$("#nav"),pn=$("#panels");
+T.forEach((t,n)=>{
+ const b=document.createElement("button");b.textContent=t[0]+" "+t[1];nav.appendChild(b);
+ const p=document.createElement("section");p.className="panel";pn.appendChild(p);t[2](p);
+ b.onclick=()=>{[...nav.children].forEach(x=>x.classList.remove("on"));[...pn.children].forEach(x=>x.classList.remove("on"));b.classList.add("on");p.classList.add("on")};
+ if(!n)b.click();
+});
+upd();
+</script></body></html>
